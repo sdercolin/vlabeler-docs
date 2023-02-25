@@ -1,0 +1,22 @@
+<% if (theme.search) { %>
+	<%- partial('search')%>
+<% } %>
+
+<header>
+	<div class="title">
+		<span><%-config.title%></span>
+	</div>
+	<%- partial('categories-display', {current_category: current_category}) %>
+</header>
+
+<section>
+	<div id="posts_container" class="posts">
+		<div class="nav">
+			<%- partial('catesandposts-display', {current_category: current_category, current_title: current_title}) %>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<p>© <%=(new Date()).getFullYear()%> • <a href="<%=url_for(theme.root) %>"><%=config.author%></a></p>
+</footer>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<%- partial('_partial/head') %>
+<body>
+  <div id="container">
+
+    <button id="sidebar-toggle" class="sidebar-toggle">
+      <input id="local-search-path" type="hidden" value="<%-url_for(config.search.path)%>" />
+      <div class="sidebar-toggle-button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <aside class="sidebar">
+    <%
+      var current_category;
+      var current_post_title;
+      if (page.categories) {
+        current_category = page.categories.first();
+        current_post_title = page.title;
+      } else {
+        current_category = site.categories.first();
+        current_post_title = current_category.posts.first().title;
+      }
+    %>
+    <%- partial('_partial/sidebar', {current_category: current_category, current_title: current_post_title}) %>
+    </aside>
+
+    <main>
+      <div class="content">
+        <%- body %>
+      </div>
+    </main>
+
+  </div>
+
+  <%- partial('_partial/footer') %>
+</body>
+
+</html>

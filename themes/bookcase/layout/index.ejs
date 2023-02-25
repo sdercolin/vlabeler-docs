@@ -1,0 +1,12 @@
+<% 
+	var category;
+	category = site.categories.first();
+	site.categories.forEach(function(cate) {
+        if(cate.name == theme.indicate) {
+        	category = cate;
+        }
+    });
+    post = category.posts.first();
+%>
+
+<%- partial('_partial/article', {post: post}) %>
